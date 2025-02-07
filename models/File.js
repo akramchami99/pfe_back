@@ -5,7 +5,7 @@ const fileSchema = new mongoose.Schema({
   fileUrl: String,
   fileId: String,
   fileSize: Number,
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Store user ID
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, 
   uploadedAt: { type: Date, default: Date.now }
 });
 

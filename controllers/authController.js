@@ -15,10 +15,6 @@ exports.register = async (req, res) => {
     user = new User({ name, email, password: hashedPassword, isVerified: true});
     await user.save();
 
-    // Create default membership
-    const membership = new Membership({ userId: user._id });
-    await membership.save();
-
     const payload = { user: { id: user._id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' });
 
@@ -27,7 +23,6 @@ exports.register = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
-
 
 
 exports.login = async (req, res) => {
